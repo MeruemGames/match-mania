@@ -21,6 +21,9 @@ body {
 .App {
   text-align: center;
 
+  display: flex;
+  flex-direction: column;
+  gap : 20px;
   
   padding: 8px;
   overflow: auto;

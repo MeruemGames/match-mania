@@ -9,15 +9,14 @@ const LevelManager: React.FC = () => {
   const [startTime, setStartTime] = useState<number>(Date.now());
   const [isGameWon, setIsGameWon] = useState(false);
 
-  const maxLevel = 5;
+  const maxLevel = 10;
 
   // Increase level and reset game when all cards are matched
   const handleLevelComplete = () => {
+    setIsGameWon(true);
     if (level < maxLevel) {
       setLevel(prevLevel => prevLevel + 1);
-      resetGame();
-    } else {
-      setIsGameWon(true);
+      // resetGame();
     }
   };
 
@@ -41,7 +40,10 @@ const LevelManager: React.FC = () => {
     setClickCount(0);
     setTimeRemaining(60);
     setStartTime(Date.now());
+
+    setIsGameWon(false);
     window.Poki?.gameplayStart();
+
   };
 
   // Calculate score
@@ -55,12 +57,17 @@ const LevelManager: React.FC = () => {
 
   return (
     <div className="level-manager">
+      {isGameWon && (
+        <div className="win-overlay">
+          <div className="win-message">Congratulations! You Win!</div>
+          <button className="restart-button" onClick={resetGame}>Play Again</button>
+        </div>
+      )}
       <GameBoard
         level={level}
         score={score}
         clickCount={clickCount}
         timeRemaining={timeRemaining}
-        isGameWon={isGameWon}
         handleCardClick={() => setClickCount(prev => prev + 1)}
         handleLevelComplete={handleLevelComplete}
         calculateScore={calculateScore}
