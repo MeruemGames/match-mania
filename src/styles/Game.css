@@ -1,0 +1,80 @@
+/* src/styles/GameBoard.css */
+
+/* General styles for the game */
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(4, 150px); /* Adjust the number of columns */
+  gap: 20px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 600px) {
+  .game-board {
+    grid-template-columns: repeat(3, 120px); /* Adjust for smaller screens */
+  }
+}
+
+.card {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3498db;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+  font-size: 2rem;
+  color: white;
+  font-weight: bold;
+}
+
+.card.is-flipped {
+  background-color: #2ecc71; /* Color when flipped */
+  transform: rotateY(180deg); /* Flip effect */
+}
+
+.card .card-value {
+  display: none; /* Hide the value by default */
+}
+
+.card.is-flipped .card-value {
+  display: block; /* Show value when flipped */
+}
+
+.card:hover {
+  transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+/* Style for matched cards */
+.card.matched {
+  background-color: #f39c12;
+  pointer-events: none; /* Disable interaction once matched */
+}
+
+.game-message {
+  position: absolute;
+  top: 20px;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.game-message.hidden {
+  display: none;
+}
+
+
+.game-status {
+  margin-top: 32px;
+}
+
+.level-manager {
+  margin-bottom: 64px;
+  padding-bottom: 64px;
+}
