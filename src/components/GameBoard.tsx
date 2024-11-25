@@ -41,7 +41,7 @@ const GameBoard: React.FC<GameBoardProps> = ({
   const uniquePairs = totalCards / 2;
 
 
-  console.log("debug ..", level, rows, cols, totalCards, uniquePairs)
+  // console.log("debug ..", level, rows, cols, totalCards, uniquePairs)
 
   useEffect(() => {
     const cardValues = Array.from({ length: uniquePairs }, (_, i) => String.fromCharCode(65 + i));
